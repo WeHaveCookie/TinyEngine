@@ -2,21 +2,11 @@
 
 namespace ManagerType{
 	enum Enum {
-		Time,
-		Sound,
-		Level,
-		Item,
-		Input,
-		Game,
-		Event,
 		Physic,
 		Render,
-		Entity,
-		File,
-		Persistent,
-		Loading,
-		Gui,
-		Command
+		Object,
+		Input,
+		Gui
 	};
 }
 

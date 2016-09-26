@@ -5,6 +5,7 @@
 #include "Manager/Render/RenderMgr.h"
 #include "Manager/Render/GuiMgr.h"
 #include "Manager/Input/InputMgr.h"
+#include "Manager/Object/ObjectMgr.h"
 
 TinyEngineManagers* TinyEngineManagers::m_instance = NULL;
 
@@ -25,6 +26,7 @@ REGISTER_MANAGER(PhysicMgr)
 REGISTER_MANAGER(RenderMgr)
 REGISTER_MANAGER(GuiMgr)
 REGISTER_MANAGER(InputMgr)
+REGISTER_MANAGER(ObjectMgr)
 
 TinyEngineManagers::TinyEngineManagers()
 {
@@ -36,7 +38,8 @@ void TinyEngineManagers::CreateManagers()
 {
 
 		CREATE_MGR(PhysicMgr)
-		CREATE_MGR(RenderMgr)
+			CREATE_MGR(RenderMgr)
+			CREATE_MGR(ObjectMgr)
 			CREATE_MGR(GuiMgr)
 			CREATE_MGR(InputMgr)
 }
@@ -45,9 +48,10 @@ void TinyEngineManagers::InitManagers()
 {
 
 		INIT_MGR(InputMgr)
-		INIT_MGR(PhysicMgr)
-		INIT_MGR(RenderMgr)
+			INIT_MGR(PhysicMgr)
+			INIT_MGR(RenderMgr)
 			INIT_MGR(GuiMgr)
+			INIT_MGR(ObjectMgr)
 }
 
 void TinyEngineManagers::UpdateManagers(float _dt)
@@ -61,6 +65,7 @@ void TinyEngineManagers::UpdateManagers(float _dt)
 
 	PROCESS_MGR(InputMgr)
 		PROCESS_MGR(PhysicMgr)
+		PROCESS_MGR(ObjectMgr)
 		PROCESS_MGR(RenderMgr)
 		PROCESS_MGR(GuiMgr)
 }
@@ -69,8 +74,9 @@ void TinyEngineManagers::DestroyManagers()
 {
 
 		END_MGR(PhysicMgr)
-		END_MGR(RenderMgr)
-		END_MGR(GuiMgr)
+			END_MGR(RenderMgr)
+			END_MGR(ObjectMgr)
+			END_MGR(GuiMgr)
 			END_MGR(InputMgr)
 
 

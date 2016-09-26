@@ -10,6 +10,9 @@
     <Filter Include="Classes\Manager\Input">
       <UniqueIdentifier>{DC87FBBF-48F4-B6BA-11E8-4E187D13D922}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Manager\Object">
+      <UniqueIdentifier>{03C18ECC-EFBA-B71E-D827-4E2FC4C01D8B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Classes\Manager\Physic">
       <UniqueIdentifier>{9CF258CF-88EC-8121-7159-18325DF2E78D}</UniqueIdentifier>
     </Filter>
@@ -38,6 +41,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Classes\Manager\Manager.h">
       <Filter>Classes\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Manager\Object\ObjectMgr.h">
+      <Filter>Classes\Manager\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Classes\Manager\Physic\PhysicMgr.h">
       <Filter>Classes\Manager\Physic</Filter>
@@ -91,6 +97,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Classes\Manager\Manager.cpp">
       <Filter>Classes\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Manager\Object\ObjectMgr.cpp">
+      <Filter>Classes\Manager\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Classes\Manager\Physic\PhysicMgr.cpp">
       <Filter>Classes\Manager\Physic</Filter>

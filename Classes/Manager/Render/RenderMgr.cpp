@@ -4,6 +4,7 @@
 #include "TinyEngineManagers.h"
 #include "Manager/Physic/PhysicMgr.h"
 #include "Manager/Render/GuiMgr.h"
+#include "Manager/Object/ObjectMgr.h"
 
 RenderMgr* RenderMgr::s_singleton = NULL;
 
@@ -32,7 +33,7 @@ void RenderMgr::init()
 
 void RenderMgr::process(const float dt)
 {
-	PhysicMgr::getSingleton()->paint();
+	ObjectMgr::getSingleton()->paint();
 	GuiMgr::getSingleton()->paint();
 
 	endFrame();

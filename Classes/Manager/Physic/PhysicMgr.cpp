@@ -62,11 +62,6 @@ void PhysicMgr::showImGuiWindow(bool* window)
 	ImGui::End();
 }
 
-void PhysicMgr::paint()
-{
-
-}
-
 void PhysicMgr::registerObject(Object* obj)
 {
 	m_registeryQueue->enqueue(obj);
@@ -99,87 +94,9 @@ bool PhysicMgr::CollisionAABBandAABB(sf::FloatRect box1, sf::FloatRect box2)
 		(box2.top + box2.height <= box1.top));
 }
 
-bool PhysicMgr::RayCastAABBAndAABB(sf::FloatRect box1Last, sf::FloatRect box1, sf::FloatRect box2)
-{
-	Vector2 aLast, bLast, cLast, dLast, centerLast, a, b, c, d, center;
-	aLast.x = box1Last.left;
-	aLast.y = box1Last.top;
-
-	a.x = box1.left;
-	a.y = box1.top;
-
-	bLast.x = box1Last.left + box1Last.width;
-	bLast.y = box1Last.top;
-
-	b.x = box1.left + box1.width;
-	b.y = box1.top;
-
-	cLast.x = box1Last.left + box1Last.width;
-	cLast.y = box1Last.top + box1.height;
-
-	c.x = box1.left + box1.width;
-	c.y = box1.top + box1.height;
-
-	dLast.x = box1Last.left;
-	dLast.y = box1Last.top + box1Last.height;
-
-	d.x = box1.left;
-	d.y = box1.top + box1.height;
-
-	centerLast.x = box1Last.left + (box1Last.width / 2.0f);
-	centerLast.y = box1Last.top + (box1Last.height / 2.0f);
-
-	center.x = box1.left + (box1.width / 2.0f);
-	center.y = box1.top + (box1.height / 2.0f);
-
-	return (CollissionAABBAndSeg(box2, centerLast, center) || CollissionAABBAndSeg(box2, aLast, a) || CollissionAABBAndSeg(box2, bLast, b) || CollissionAABBAndSeg(box2, cLast, c) || CollissionAABBAndSeg(box2, dLast, d));
-}
-
-bool PhysicMgr::CollissionAABBAndSeg(sf::FloatRect box1, Vector2 sStart, Vector2 sEnd)
-{
-	Vector2 a, b, c, d;
-	a.x = box1.left;
-	a.y = box1.top;
-	
-	b.x = box1.left + box1.width;
-	b.y = box1.top;
-	
-	c.x = box1.left + box1.width;
-	c.y = box1.top + box1.height;
-
-	d.x = box1.left;
-	d.y = box1.top + box1.height;
-	
-	return CollisionSegAndSeg(a, b, sStart, sEnd) || CollisionSegAndSeg(b, c, sStart, sEnd) || CollisionSegAndSeg(c, d, sStart, sEnd) || CollisionSegAndSeg(d, a, sStart, sEnd);
-}
-
-bool PhysicMgr::CollisionLineAndSeg(Vector2 dStart, Vector2 dEnd, Vector2 sStart, Vector2 sEnd)
-{
-	Vector2 AO, AP, AB;
-	AB.x = dEnd.x - dStart.x;
-	AB.y = dEnd.y - dStart.y;
-	AP.x = sEnd.x - dStart.x;
-	AP.y = sEnd.y - dStart.y;
-	AO.x = sStart.x - dStart.x;
-	AO.y = sStart.y - dStart.y;
-	if ((AB.x*AP.y - AB.y*AP.x)*(AB.x*AO.y - AB.y*AO.x) < 0)
-		return true;
-	else
-		return false;
-}
-
-bool PhysicMgr::CollisionSegAndSeg(Vector2 s1Start, Vector2 s1End, Vector2 s2Start, Vector2 s2End)
-{
-	if (CollisionLineAndSeg(s1Start, s1End, s2Start, s2End) == false)
-		return false;
-	if (CollisionLineAndSeg(s2Start, s2End, s1Start, s1End) == false)
-		return false;
-	return true;
-}
-
-
 void PhysicMgr::checkValidityOfPosition(Object* obj)
 {
+	// Check Collision
 }
 
 

@@ -14,11 +14,13 @@ DECLARE_MANAGER(PhysicMgr)
 DECLARE_MANAGER(RenderMgr)
 DECLARE_MANAGER(GuiMgr)
 DECLARE_MANAGER(InputMgr)
+DECLARE_MANAGER(ObjectMgr)
 
 #define PHYSIC_MGR		g_PhysicMgr;
 #define RENDER_MGR		g_RenderMgr;
 #define GUI_MGR			g_GuiMgr;
 #define INPUT_MGR		g_InputMgr;
+#define OBJECT_MGR		g_ObjectMgr;
 
 class Manager;
 

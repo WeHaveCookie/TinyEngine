@@ -9,8 +9,6 @@ int main()
 	gameMgrs->CreateManagers();
 	gameMgrs->InitManagers();
 	sf::Clock framerate;
-	
-
 
 	while (gameMgrs->isRunning())
 	{

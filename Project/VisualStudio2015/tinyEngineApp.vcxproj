@@ -427,6 +427,7 @@ xcopy /f/y/d "..\..\..\External\SFML-2.3.2\bin\x64\Release\*.dll" "$(OutDir)"</C
   <ItemGroup>
     <ClInclude Include="..\..\Classes\Manager\Input\InputMgr.h" />
     <ClInclude Include="..\..\Classes\Manager\Manager.h" />
+    <ClInclude Include="..\..\Classes\Manager\Object\ObjectMgr.h" />
     <ClInclude Include="..\..\Classes\Manager\Physic\PhysicMgr.h" />
     <ClInclude Include="..\..\Classes\Manager\Render\GuiMgr.h" />
     <ClInclude Include="..\..\Classes\Manager\Render\RenderMgr.h" />
@@ -446,6 +447,7 @@ xcopy /f/y/d "..\..\..\External\SFML-2.3.2\bin\x64\Release\*.dll" "$(OutDir)"</C
   <ItemGroup>
     <ClCompile Include="..\..\Classes\Manager\Input\InputMgr.cpp" />
     <ClCompile Include="..\..\Classes\Manager\Manager.cpp" />
+    <ClCompile Include="..\..\Classes\Manager\Object\ObjectMgr.cpp" />
     <ClCompile Include="..\..\Classes\Manager\Physic\PhysicMgr.cpp" />
     <ClCompile Include="..\..\Classes\Manager\Render\GuiMgr.cpp" />
     <ClCompile Include="..\..\Classes\Manager\Render\RenderMgr.cpp" />
