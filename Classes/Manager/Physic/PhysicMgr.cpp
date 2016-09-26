@@ -2,6 +2,7 @@
 #include "PhysicMgr.h"
 #include "blockingconcurrentqueue.h"
 #include "Object/Object.h"
+#include "TinyEngineManagers.h"
 
 PhysicMgr* PhysicMgr::s_singleton = NULL;
 
@@ -23,6 +24,7 @@ PhysicMgr::~PhysicMgr()
 void PhysicMgr::init()
 {
 	m_processTime = sf::Time::Zero;
+	m_framerate = 60;
 }
 
 void PhysicMgr::process(const float dt)
@@ -49,6 +51,11 @@ void PhysicMgr::showImGuiWindow(bool* window)
 {
 	if (ImGui::Begin("PhysicMgr", window))
 	{
+		int framerate = m_framerate;
+		ImGui::InputInt("Framerate", &framerate);
+		setFramerate(framerate);
+
+		ImGui::Text("Time per Frame : %f", g_realTime);
 		ImGui::Checkbox("Enable Phys", &m_enable);
 		for (auto& object : m_objects)
 		{
@@ -108,5 +115,14 @@ void PhysicMgr::processRegisteryQueue()
 	{
 		m_objects.push_back(obj);
 		dequeue = m_registeryQueue->try_dequeue(obj);
+	}
+}
+
+void PhysicMgr::setFramerate(int framerate)
+{
+	if (framerate != m_framerate)
+	{
+		m_framerate = framerate;
+		g_Framerate = 1.0 / m_framerate;
 	}
 }

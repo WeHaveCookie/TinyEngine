@@ -27,6 +27,8 @@ class PhysicMgr : public Manager
 
 		sf::Time getProcessTime() { return m_processTime; }
 
+		void setFramerate(int framerate);
+
         // Inline
     protected:
 	private:
@@ -39,4 +41,5 @@ class PhysicMgr : public Manager
 		RegisteryQueue*									m_registeryQueue;
 		sf::Time										m_processTime;
 		bool											m_enable;
+		int												m_framerate;
 };

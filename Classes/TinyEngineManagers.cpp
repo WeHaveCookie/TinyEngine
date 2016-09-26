@@ -21,6 +21,7 @@ float g_DeltaTimeRaw = 0.33f;
 float g_DeltaTime = 0.33f;
 float g_DeltaTimeFactor = 1.f;
 float g_Framerate = 1.0f/60.0f;
+float g_realTime = 0.0f;
 
 REGISTER_MANAGER(PhysicMgr)
 REGISTER_MANAGER(RenderMgr)

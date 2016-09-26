@@ -9,36 +9,43 @@ public:
 	const char* getName() const;
 	uint32_t getUID() const;
 	void showInfo();
-
-
+	void paint();
 };
 
-class Cercle : public Object
+class Circle : public Object
 {
 public:
-	Cercle();
-	~Cercle();
+	Circle(float radius);
+	~Circle();
+
+	const sf::CircleShape getShape() const { return m_shape; }
 
 private:
-	Vector2 m_center;
-	float	m_radius;
+	sf::CircleShape m_shape;
 };
 
 class AABB : public Object
 {
 public:
-	AABB();
+	AABB(float left, float top, float width, float height);
+	AABB(Vector2 pos, Vector2 size);
 	~AABB();
 
+	const sf::FloatRect getShape() const { return m_shape; }
+
 private:
-	sf::FloatRect m_bound;
+	sf::FloatRect m_shape;
 };
 
 class OBB : public Object
 {
 public:
-	OBB();
+	OBB(float left, float top, float width, float height, float angle);
+	OBB(AABB box, float angle);
 	~OBB();
+
+	const sf::FloatRect getShape() const { return m_shape; }
+	const float getAngle() const { return m_angle; }
 
 private:
 	sf::FloatRect	m_bound;
@@ -49,19 +56,26 @@ private:
 class KDOP : public Object
 {
 public:
-	KDOP();
+	KDOP(int nbrPoints);
 	~KDOP();
 
+	void addPoint(Vector2 pos);
+	const sf::ConvexShape getShape() const { return m_shape; }
+
 private:
-	std::vector<Vector2> m_points;
+	sf::ConvexShape m_shape;
+	int m_points;
+	int m_currentPoint;
 };
 
 class Point : public Object
 {
 public:
-	Point();
+	Point(float x, float y);
 	~Point();
 
+	const Vector2 getCoord() const { return m_coord; }
+
 private:
-	Vector2 m_point;
+	Vector2 m_coord;
 };
