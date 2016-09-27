@@ -19,6 +19,7 @@ class RenderMgr : public Manager
 
 		const bool isRunning() const { return m_mainRenderWindow->isOpen(); }
 
+		const sf::Vector2u getWindowSize() const { return m_mainRenderWindow->getSize(); }
 		sf::RenderWindow* getMainRenderWindow() const { return m_mainRenderWindow; }
 
 	private:

@@ -2,19 +2,19 @@
 #include "GuiMgr.h"
 
 #include "Manager/Physic/PhysicMgr.h"
-#include "Manager/Render/RenderMgr.h"
+#include "Manager/Object//ObjectMgr.h"
 
 GuiMgr* GuiMgr::s_singleton = NULL;
 
 struct GuiMgr::Flags
 {
 	bool show_PhysicMgr;
-	bool show_RenderMgr;
+	bool show_ObjectMgr;
 	bool show_Demo;
 
 	Flags()
 		:show_PhysicMgr(false),
-		show_RenderMgr(false),
+		show_ObjectMgr(false),
 		show_Demo(false)
 	{
 
@@ -51,7 +51,7 @@ void GuiMgr::paint()
 			if (ImGui::BeginMenu("Manager"))
 			{
 				ImGui::MenuItem("PhysicMgr", NULL, &m_flags->show_PhysicMgr);
-				ImGui::MenuItem("RenderMgr", NULL, &m_flags->show_RenderMgr);
+				ImGui::MenuItem("ObjectMgr", NULL, &m_flags->show_ObjectMgr);
 				ImGui::EndMenu();
 			}
 
@@ -70,15 +70,17 @@ void GuiMgr::paint()
 			PhysicMgr::getSingleton()->showImGuiWindow(&m_flags->show_PhysicMgr);
 		}
 
-		if (m_flags->show_RenderMgr)
+		if (m_flags->show_ObjectMgr)
 		{
-			RenderMgr::getSingleton()->showImGuiWindow(&m_flags->show_RenderMgr);
+			ObjectMgr::getSingleton()->showImGuiWindow(&m_flags->show_ObjectMgr);
 		}
 
 		if (m_flags->show_Demo)
 		{
 			ImGui::ShowTestWindow(&m_flags->show_Demo);
 		}
+
+		ObjectMgr::getSingleton()->paintGui();
 	}
 }
 
