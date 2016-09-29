@@ -97,10 +97,10 @@ void PhysicMgr::unregisterObject(Object* obj)
 
 bool PhysicMgr::CollisionCircleAndCircle(Object* circle1, Object* circle2)
 {
-	Circle* circle1Ptr = static_cast<Circle*>(circle1);
+	Circle* circle1Ptr = dynamic_cast<Circle*>(circle1);
 	Vector2 circlePos1 = circle1Ptr->getCenter();
 	float radius1 = circle1Ptr->getRadius();
-	Circle* circle2Ptr = static_cast<Circle*>(circle2);
+	Circle* circle2Ptr = dynamic_cast<Circle*>(circle2);
 	Vector2 circlePos2 = circle2Ptr->getCenter();
 	float radius2 = circle2Ptr->getRadius();
 
@@ -157,7 +157,7 @@ int ProjectionSurSegment(int Cx, int Cy, int Ax, int Ay, int Bx, int By)
 
 bool PhysicMgr::CollisionCircleAndAABB(Object* circle, sf::FloatRect aabbBounds)
 {
-	Circle* circlePtr = static_cast<Circle*>(circle);
+	Circle* circlePtr = dynamic_cast<Circle*>(circle);
 	sf::CircleShape circleShape = circlePtr->getShape();
 	sf::FloatRect circleBound = circleShape.getGlobalBounds();
 
@@ -204,7 +204,7 @@ bool PhysicMgr::CollisionCircleAndKDOP(Object* circle, Object* kdop)
 
 bool PhysicMgr::CollisionCircleAndPoint(Object* circle, Vector2 pointPos)
 {
-	auto circlePtr = static_cast<Circle*>(circle);
+	auto circlePtr = dynamic_cast<Circle*>(circle);
 	Vector2 circlePos = circlePtr->getCenter();
 	float radius = circlePtr->getRadius();
 	int d2 = (pointPos.x - circlePos.x)*(pointPos.x - circlePos.x) + (pointPos.y - circlePos.y)*(pointPos.y - circlePos.y);
@@ -294,7 +294,7 @@ int intersectsegment(sf::Vector2f A, sf::Vector2f B, sf::Vector2f I, sf::Vector2
 
 bool PhysicMgr::CollisionKDOPAndPoint(Object* kdop, Vector2 pointPos, int count)
 {
-	sf::ConvexShape kdopShape = static_cast<KDOP*>(kdop)->getShape();
+	sf::ConvexShape kdopShape = dynamic_cast<KDOP*>(kdop)->getShape();
 	int i;
 	sf::Vector2f I = sf::Vector2f(randIntBorned(2000,10100), randIntBorned(2000, 10100));
 	int nbintersections = 0;
@@ -356,7 +356,7 @@ void PhysicMgr::checkValidityOfPosition(Object* obj)
 				}
 				else if (objType == ObjectType::AABB && colliderType == ObjectType::AABB)
 				{
-					colliding = CollisionAABBandAABB(static_cast<AABB*>(obj)->getShape().getGlobalBounds(), static_cast<AABB*>(collider)->getShape().getGlobalBounds());
+					colliding = CollisionAABBandAABB(dynamic_cast<AABB*>(obj)->getShape().getGlobalBounds(), dynamic_cast<AABB*>(collider)->getShape().getGlobalBounds());
 				}
 				else if (objType == ObjectType::OBB && colliderType == ObjectType::OBB)
 				{
@@ -372,11 +372,11 @@ void PhysicMgr::checkValidityOfPosition(Object* obj)
 				}
 				else if (objType == ObjectType::Circle && colliderType == ObjectType::AABB)
 				{
-					colliding = CollisionCircleAndAABB(obj, static_cast<AABB*>(collider)->getShape().getGlobalBounds());
+					colliding = CollisionCircleAndAABB(obj, dynamic_cast<AABB*>(collider)->getShape().getGlobalBounds());
 				}
 				else if (objType == ObjectType::AABB && colliderType == ObjectType::Circle)
 				{
-					colliding = CollisionCircleAndAABB(collider, static_cast<AABB*>(obj)->getShape().getGlobalBounds());
+					colliding = CollisionCircleAndAABB(collider, dynamic_cast<AABB*>(obj)->getShape().getGlobalBounds());
 				}
 				else if (objType == ObjectType::Circle && colliderType == ObjectType::OBB)
 				{
@@ -420,11 +420,11 @@ void PhysicMgr::checkValidityOfPosition(Object* obj)
 				}
 				else if (objType == ObjectType::AABB && colliderType == ObjectType::Point)
 				{
-					colliding = CollisionAABBAndPoint(static_cast<AABB*>(obj)->getShape().getGlobalBounds(), collider->getPos());
+					colliding = CollisionAABBAndPoint(dynamic_cast<AABB*>(obj)->getShape().getGlobalBounds(), collider->getPos());
 				}
 				else if (objType == ObjectType::Point && colliderType == ObjectType::AABB)
 				{
-					colliding = CollisionAABBAndPoint(static_cast<AABB*>(collider)->getShape().getGlobalBounds(), obj->getPos());
+					colliding = CollisionAABBAndPoint(dynamic_cast<AABB*>(collider)->getShape().getGlobalBounds(), obj->getPos());
 				}
 				else if (objType == ObjectType::OBB && colliderType == ObjectType::KDOP)
 				{

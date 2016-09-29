@@ -128,7 +128,7 @@ uint32_t ObjectMgr::createKDOP(float x, float y, int nbrPoints)
 void ObjectMgr::addPointKDOP(uint32_t id, Vector2 pos)
 {
 	Object* obj = getObject(id);
-	KDOP* kdop = static_cast<KDOP*>(obj);
+	KDOP* kdop = dynamic_cast<KDOP*>(obj);
 	if (kdop != NULL)
 	{
 		kdop->addPoint(pos);
